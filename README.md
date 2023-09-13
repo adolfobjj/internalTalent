@@ -1,5 +1,9 @@
 Desafio internal Talent 
+Java 17
+Spring Boot
 APi Clientes , Produtos e Pedido.
+testes no postman
+
 Criação do cliente:
 
 {
