@@ -1,23 +1,26 @@
 package com.meuprojeto.internalTalent.service.impl;
 
-import com.meuprojeto.internalTalent.rest.dto.ItemPedidoDTO;
-import com.meuprojeto.internalTalent.rest.dto.PedidoDTO;
 import com.meuprojeto.internalTalent.domain.entity.Cliente;
 import com.meuprojeto.internalTalent.domain.entity.ItemPedido;
 import com.meuprojeto.internalTalent.domain.entity.Pedido;
 import com.meuprojeto.internalTalent.domain.entity.Produto;
-import com.meuprojeto.internalTalent.exception.RegraNegocioException;
+import com.meuprojeto.internalTalent.domain.enums.StatusPedido;
 import com.meuprojeto.internalTalent.domain.repository.Clientes;
 import com.meuprojeto.internalTalent.domain.repository.ItemsPedido;
 import com.meuprojeto.internalTalent.domain.repository.Pedidos;
 import com.meuprojeto.internalTalent.domain.repository.Produtos;
+import com.meuprojeto.internalTalent.exception.PedidoNaoEncontradoException;
+import com.meuprojeto.internalTalent.exception.RegraNegocioException;
+import com.meuprojeto.internalTalent.rest.dto.ItemPedidoDTO;
+import com.meuprojeto.internalTalent.rest.dto.PedidoDTO;
 import com.meuprojeto.internalTalent.service.PedidoService;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,7 +34,7 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Override
     @Transactional
-    public Pedido salvar(PedidoDTO dto ) {
+    public Pedido salvar( PedidoDTO dto ) {
         Integer idCliente = dto.getCliente();
         Cliente cliente = clientesRepository
                 .findById(idCliente)
@@ -41,12 +44,29 @@ public class PedidoServiceImpl implements PedidoService {
         pedido.setTotal(dto.getTotal());
         pedido.setDataPedido(LocalDate.now());
         pedido.setCliente(cliente);
+        pedido.setStatus(StatusPedido.REALIZADO);
 
         List<ItemPedido> itemsPedido = converterItems(pedido, dto.getItems());
         repository.save(pedido);
         itemsPedidoRepository.saveAll(itemsPedido);
         pedido.setItens(itemsPedido);
         return pedido;
+    }
+
+    @Override
+    public Optional<Pedido> obterPedidoCompleto(Integer id) {
+        return repository.findByIdFetchItens(id);
+    }
+
+    @Override
+    @Transactional
+    public void atualizaStatus( Integer id, StatusPedido statusPedido ) {
+        repository
+                .findById(id)
+                .map( pedido -> {
+                    pedido.setStatus(statusPedido);
+                    return repository.save(pedido);
+                }).orElseThrow(() -> new PedidoNaoEncontradoException() );
     }
 
     private List<ItemPedido> converterItems(Pedido pedido, List<ItemPedidoDTO> items){
