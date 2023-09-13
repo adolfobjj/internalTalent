@@ -12,8 +12,7 @@ Criação do cliente:
     
 }
 
-
-<img width="501" alt="image" src="https://github.com/adolfobjj/internalTalent/assets/47535842/f184112c-7d71-4082-9efc-9bfdad569787">
+![Criação do cliente](https://github.com/adolfobjj/internalTalent/assets/47535842/f184112c-7d71-4082-9efc-9bfdad569787)
 
 Criação do Produto:
 
