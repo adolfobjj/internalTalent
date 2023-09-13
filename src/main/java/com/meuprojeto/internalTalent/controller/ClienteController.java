@@ -13,14 +13,14 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api/clientes")
 public class ClienteController {
 
 @Autowired
 private Clientes clientes;
 
 
-    @GetMapping("/api/clientes/{id}")
-    @ResponseBody
+    @GetMapping("{id}")
     public ResponseEntity getClienteById( @PathVariable Integer id ){
         Optional<Cliente> cliente = clientes.findById(id);
 
@@ -30,7 +30,7 @@ private Clientes clientes;
 
         return ResponseEntity.notFound().build();
     }
-    @GetMapping("/api/clientes")
+    @GetMapping
     public ResponseEntity find( Cliente filtro ){
         ExampleMatcher matcher = ExampleMatcher
                 .matching()
@@ -44,15 +44,13 @@ private Clientes clientes;
     }
 
 
-    @PostMapping("/api/clientes")
-    @ResponseBody
+    @PostMapping
     public ResponseEntity save( @RequestBody Cliente cliente ){
         Cliente clienteSalvo = clientes.save(cliente);
         return ResponseEntity.ok(clienteSalvo);
     }
 
-    @DeleteMapping("/api/clientes/{id}")
-    @ResponseBody
+    @DeleteMapping("{id}")
     public ResponseEntity delete( @PathVariable Integer id ){
         Optional<Cliente> cliente = clientes.findById(id);
 
@@ -63,8 +61,7 @@ private Clientes clientes;
 
         return ResponseEntity.notFound().build();
     }
-    @PutMapping("/api/clientes/{id}")
-    @ResponseBody
+    @PutMapping("{id}")
     public ResponseEntity update( @PathVariable Integer id,
                                   @RequestBody Cliente cliente ){
         return clientes
