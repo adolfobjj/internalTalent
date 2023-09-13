@@ -1,14 +1,25 @@
 package com.meuprojeto.internalTalent.entity;
 
-import jakarta.persistence.Entity;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Data
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Produto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Integer id;
-    private String nome;
+
+    @Column(name = "descricao")
+    private String descricao;
+
+    @Column(name = "preco_unitario")
     private BigDecimal preco;
 }
