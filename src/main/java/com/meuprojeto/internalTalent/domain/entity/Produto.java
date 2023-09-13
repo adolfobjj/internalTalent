@@ -1,4 +1,4 @@
-package com.meuprojeto.internalTalent.entity;
+package com.meuprojeto.internalTalent.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

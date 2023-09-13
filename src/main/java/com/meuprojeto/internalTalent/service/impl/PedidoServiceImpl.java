@@ -1,16 +1,16 @@
 package com.meuprojeto.internalTalent.service.impl;
 
-import com.meuprojeto.internalTalent.dto.ItemPedidoDTO;
-import com.meuprojeto.internalTalent.dto.PedidoDTO;
-import com.meuprojeto.internalTalent.entity.Cliente;
-import com.meuprojeto.internalTalent.entity.ItemPedido;
-import com.meuprojeto.internalTalent.entity.Pedido;
-import com.meuprojeto.internalTalent.entity.Produto;
+import com.meuprojeto.internalTalent.rest.dto.ItemPedidoDTO;
+import com.meuprojeto.internalTalent.rest.dto.PedidoDTO;
+import com.meuprojeto.internalTalent.domain.entity.Cliente;
+import com.meuprojeto.internalTalent.domain.entity.ItemPedido;
+import com.meuprojeto.internalTalent.domain.entity.Pedido;
+import com.meuprojeto.internalTalent.domain.entity.Produto;
 import com.meuprojeto.internalTalent.exception.RegraNegocioException;
-import com.meuprojeto.internalTalent.repository.Clientes;
-import com.meuprojeto.internalTalent.repository.ItemsPedido;
-import com.meuprojeto.internalTalent.repository.Pedidos;
-import com.meuprojeto.internalTalent.repository.Produtos;
+import com.meuprojeto.internalTalent.domain.repository.Clientes;
+import com.meuprojeto.internalTalent.domain.repository.ItemsPedido;
+import com.meuprojeto.internalTalent.domain.repository.Pedidos;
+import com.meuprojeto.internalTalent.domain.repository.Produtos;
 import com.meuprojeto.internalTalent.service.PedidoService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

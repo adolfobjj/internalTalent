@@ -1,4 +1,4 @@
-package com.meuprojeto.internalTalent.dto;
+package com.meuprojeto.internalTalent.rest.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

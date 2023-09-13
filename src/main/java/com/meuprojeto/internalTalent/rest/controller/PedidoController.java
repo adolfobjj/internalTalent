@@ -1,7 +1,7 @@
-package com.meuprojeto.internalTalent.controller;
+package com.meuprojeto.internalTalent.rest.controller;
 
-import com.meuprojeto.internalTalent.dto.PedidoDTO;
-import com.meuprojeto.internalTalent.entity.Pedido;
+import com.meuprojeto.internalTalent.rest.dto.PedidoDTO;
+import com.meuprojeto.internalTalent.domain.entity.Pedido;
 import com.meuprojeto.internalTalent.service.PedidoService;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package com.meuprojeto.internalTalent.entity;
+package com.meuprojeto.internalTalent.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

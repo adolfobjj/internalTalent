@@ -1,6 +1,6 @@
-package com.meuprojeto.internalTalent.repository;
+package com.meuprojeto.internalTalent.domain.repository;
 
-import com.meuprojeto.internalTalent.entity.Cliente;
+import com.meuprojeto.internalTalent.domain.entity.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

@@ -1,7 +1,7 @@
-package com.meuprojeto.internalTalent.controller;
+package com.meuprojeto.internalTalent.rest.controller;
 
-import com.meuprojeto.internalTalent.entity.Produto;
-import com.meuprojeto.internalTalent.repository.Produtos;
+import com.meuprojeto.internalTalent.domain.entity.Produto;
+import com.meuprojeto.internalTalent.domain.repository.Produtos;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;

@@ -1,18 +1,16 @@
-package com.meuprojeto.internalTalent.controller;
+package com.meuprojeto.internalTalent.rest.controller;
 
-import com.meuprojeto.internalTalent.entity.Cliente;
-import com.meuprojeto.internalTalent.repository.Clientes;
+import com.meuprojeto.internalTalent.domain.entity.Cliente;
+import com.meuprojeto.internalTalent.domain.repository.Clientes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/clientes")
